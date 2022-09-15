@@ -1,33 +1,29 @@
 from itertools import combinations
+from typing import Tuple
 
 
-def part_one(filename: str) -> int:
+def expense_groups(filename: str, size: int) -> tuple[int, ...]:
     with open(filename, 'r') as f:
         nums = list(map(lambda l: int(l.strip()), f.readlines()))
 
-    def sum_to_2020(values):
-        return sum(values) == 2020
+    expense_group = list(combinations(nums, size))
 
-    expense_pairs = list(combinations(nums, 2))
+    return list(filter(lambda values: sum(values) == 2020, expense_group))[0]
 
-    a, b = list(filter(sum_to_2020, expense_pairs))[0]
+
+def part_one(filename: str) -> int:
+    a, b = expense_groups(filename, 2)
 
     return a * b
 
 
 def part_two(filename: str) -> int:
-    with open(filename, 'r') as f:
-        nums = list(map(lambda l: int(l.strip()), f.readlines()))
 
-    def sum_to_2020(values):
-        return sum(values) == 2020
-
-    expense_pairs = list(combinations(nums, 3))
-
-    a, b, c = list(filter(sum_to_2020, expense_pairs))[0]
+    a, b, c = expense_groups(filename, 3)
 
     return a * b * c
 
 
 if __name__ == '__main__':
+    print(part_one('expense.txt'))
     print(part_two('expense.txt'))
