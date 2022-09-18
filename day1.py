@@ -13,14 +13,11 @@ def expense_groups(filename: str, size: int) -> tuple[int, ...]:
 
 def part_one(filename: str) -> int:
     a, b = expense_groups(filename, 2)
-
     return a * b
 
 
 def part_two(filename: str) -> int:
-
     a, b, c = expense_groups(filename, 3)
-
     return a * b * c
 
 
