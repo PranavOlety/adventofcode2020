@@ -46,6 +46,6 @@ def part_two(filename):
 
 
 if __name__ == '__main__':
-    print(part_one('passwords.txt'))
-    print(part_two('passwords.txt'))
+    print(part_one('../passwords.txt'))
+    print(part_two('../passwords.txt'))
 
